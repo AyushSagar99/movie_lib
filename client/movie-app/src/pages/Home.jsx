@@ -54,7 +54,7 @@ export default function Home() {
         {error && <p className="text-red-500 text-center mt-4">{error}</p>}
         <div className='flex flex-wrap justify-center mt-4'>
           {movies.length > 0 && movies.map((movie) => (
-            <div key={movie.imdbID} className='m-2 p-2 bg-gray-700 rounded-md'>
+            <div key={movie.imdbID} className='m-2 p-2 bg-gray-700 rounded-md '>
               <h2>{movie.Title}</h2>
               <p>{movie.Year}</p>
               <img src={movie.Poster} alt={movie.Title} className='w-32 h-48'/>
