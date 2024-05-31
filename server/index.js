@@ -174,6 +174,27 @@ app.post("/isprivate", authenticateToken, async (req, res) => {
   }
 });
 
+// Assuming you have a route like '/movies/:userId'
+
+app.get('/movies/:userId', authenticateToken, async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const movieLibrary = await movieLib.findOne({ user: userId });
+
+    if (!movieLibrary) {
+      return res.status(404).json({ error: 'No movie library found for this user' });
+    }
+
+    return res.status(200).json({ movies: movieLibrary.movies, userId: movieLibrary.user, isPrivate: movieLibrary.isPrivate });
+  } catch (error) {
+    console.error('Error fetching movies:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
+
 
 module.exports = router;
 
