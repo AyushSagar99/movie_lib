@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
-import axios from 'axios';
+import { getTokenFromLocalStorage } from '../utils/auth';
+import Library from '../components/library';
 
 export default function Home() {
   const [search, setSearch] = useState('');
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState('');
+
+ 
+  
 
   const fetchData = async (value) => {
     try {
@@ -52,11 +56,13 @@ export default function Home() {
           />
         </div>
         {error && <p className="text-red-500 text-center mt-4">{error}</p>}
-        <div className='flex flex-wrap justify-center mt-4'>
+        <div className='flex flex-wrap justify-center mt-4 '>
           {movies.length > 0 && movies.map((movie) => (
             <div key={movie.imdbID} className='m-2 p-2 bg-gray-700 rounded-md '>
               <h2>{movie.Title}</h2>
+              <Library title={movie.Title} year={movie.Year}/>
               <p>{movie.Year}</p>
+              <p>{movie.Type}</p>
               <img src={movie.Poster} alt={movie.Title} className='w-32 h-48'/>
             </div>
           ))}

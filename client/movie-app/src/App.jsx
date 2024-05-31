@@ -4,6 +4,7 @@ import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import {QueryClient,QueryClientProvider} from '@tanstack/react-query'
+import MyList from "./pages/MyList"
 
 const queryClient=new  QueryClient({})
 
@@ -13,6 +14,7 @@ const routes=(
       <Route path="/home" element={<Home/>} />
       <Route path="/login" element={<Login/>} />
       <Route path="/signup" element={<Signup/>} />
+      <Route path="/mylist" element={<MyList/>} />
     </Routes>
   </Router>
 )

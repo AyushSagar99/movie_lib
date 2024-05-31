@@ -1,18 +1,9 @@
 const mongoose = require('mongoose');
 require('dotenv').config(); // Load environment variables
 
-// Ensure MONGODB_URI is defined
-if (!process.env.MONGODB_URI) {
-    console.error("MONGODB_URI is not defined in the environment variables.");
-    process.exit(1);
-}
 
-mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 10000, // 10 seconds
-    socketTimeoutMS: 45000 // 45 seconds
-})
+
+mongoose.connect("mongodb+srv://saggarayush:27dQaNH1lbzzKlYp@cluster0.8rvr6mf.mongodb.net/movies")
 .then(() => {
     console.log("MongoDB connected");
 })
@@ -33,7 +24,25 @@ const newSchema = new mongoose.Schema({
     }
 });
 
+const movieSchema = new mongoose.Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true // This is causing the error
+    },
+    movies: [{
+        title: String,
+        year: String,
+        image: String
+    }],
+    isPrivate:{
+        type:Boolean,
+        default:true,
+    }
+});
+
 const User = mongoose.model("User", newSchema);
-module.exports = User;
+const movieLib = mongoose.model("MovieLib", movieSchema);
+module.exports = {User,movieLib};
 
 // Additional server setup (e.g., express) goes here
