@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import { getTokenFromLocalStorage } from '../utils/auth';
+import toast from 'react-hot-toast';
 
 export default function Library({ title, year, image }) {
   async function List(e) {
@@ -26,13 +27,13 @@ export default function Library({ title, year, image }) {
       )
       .then(res => {
         if (res.data === "success") {
-          alert("Movie added to the list");
+          toast.success("Movie added to the list");
         } else {
           alert("Try again");
         }
       })
       .catch(e => {
-        alert("Error adding movie");
+        toast.error("Error adding movie");
         console.log(e);
       });
     } catch (e) {
@@ -41,7 +42,7 @@ export default function Library({ title, year, image }) {
   }
 
   return (
-    <button onClick={List} className='hover:scale-110 transition bg-green-600 text-black rounded-lg p-1 font-medium'>
+    <button onClick={List} className='hover:scale-110 focus:scale-110 transition bg-green-600 text-black rounded-lg p-1 font-medium'>
       Add to list
     </button>
   );

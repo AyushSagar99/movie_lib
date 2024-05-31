@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { getTokenFromLocalStorage, removeTokenFromLocalStorage } from '../utils/auth';
+import Library from '../components/library';
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ export default function Navbar() {
 
   const goToList = () => {
     navigate("/mylist");
+    
   };
 
   const goToHome = () => {
@@ -53,9 +55,9 @@ export default function Navbar() {
             Get List
           </button>
         )}
-        {/* <button onClick={handleLogout} className='bg-red-700 h-10 p-1 m-2 rounded-lg hover:scale-110 transition'>
+        <button onClick={handleLogout} className='bg-red-700 h-10 p-1 m-2 rounded-lg hover:scale-110 transition'>
           Logout
-        </button> */}
+        </button>
       </div>
     </div>
   );

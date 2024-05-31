@@ -5,6 +5,7 @@ import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import {QueryClient,QueryClientProvider} from '@tanstack/react-query'
 import MyList from "./pages/MyList"
+import { Toaster } from "react-hot-toast";
 
 const queryClient=new  QueryClient({})
 
@@ -24,6 +25,7 @@ function App() {
   return (
     <>
     <div>
+      <Toaster position="top-center" />
       <QueryClientProvider client={queryClient}>
       {routes}
       </QueryClientProvider>

@@ -79,7 +79,7 @@ app.post("/signup", async (req, res) => {
   try {
     const check = await User.findOne({ email: email });
     if (check) {
-      return res.json("exist");
+      return res.status(409).json({ error: "User already exists" }); // 409 Conflict
     } else {
       // Hash the password and create the user
       const hashedPassword = await bcrypt.hash(password, 10);
@@ -97,7 +97,8 @@ app.post("/signup", async (req, res) => {
   }
 });
 
-app.post('/add-movie',  async (req, res) => {
+
+app.post('/add-movie', authenticateToken  ,async (req, res) => {
   const { title, year, image, userId } = req.body;
 
   try {
@@ -158,9 +159,8 @@ app.post("/isprivate", authenticateToken, async (req, res) => {
 
   try {
     const movieLibrary = await movieLib.findOneAndUpdate(
-      { user: new mongoose.Types.ObjectId(userId) },
+      { user: userId }, // Convert userId to ObjectId
       { isPrivate: isPrivate },
-      { new: true }
     );
 
     if (!movieLibrary) {

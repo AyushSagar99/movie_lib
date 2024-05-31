@@ -8,9 +8,6 @@ export default function Home() {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState('');
 
- 
-  
-
   const fetchData = async (value) => {
     try {
       const response = await fetch(`https://www.omdbapi.com/?s=${value}&plot=full&apikey=3f8db1d7`);
@@ -43,27 +40,29 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <div className='bg-gray-950 h-screen text-white'>
-        <div className='flex justify-center items-center top-52'>
-          Search Movies:
+      <div className='bg-gray-900 h-full  text-white'>
+        <div className='flex justify-center items-center '>
+          <h1 className="text-4xl font-bold">Discover Movies</h1>
           <input
             type="search"
             name="library"
-            placeholder='Movie Title'
+            placeholder='Search by Movie Title'
             value={search}
             onChange={(e) => handleChange(e.target.value)}
-            className='bg-gray-600 rounded-md m-2 p-1 outline-none'
+            className='bg-gray-600 rounded-md m-2 p-1 outline-none ml-4 mt-4 '
           />
         </div>
         {error && <p className="text-red-500 text-center mt-4">{error}</p>}
-        <div className='flex flex-wrap justify-center mt-4 '>
-          {movies.length > 0 && movies.map((movie) => (
-            <div key={movie.imdbID} className='m-2 p-2 bg-gray-700 rounded-md '>
-              <h2>{movie.Title}</h2>
-              <Library title={movie.Title} year={movie.Year}/>
-              <p>{movie.Year}</p>
-              <p>{movie.Type}</p>
-              <img src={movie.Poster} alt={movie.Title} className='w-32 h-48'/>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8 mx-4'>
+          {movies.map((movie) => (
+            <div key={movie.imdbID} className='bg-gray-700 rounded-md overflow-hidden'>
+              <img src={movie.Poster} alt={movie.Title} className='w-full h-64 object-cover' />
+              <div className='p-4'>
+                <h2 className='text-xl font-semibold mb-2'>{movie.Title}</h2>
+                <p className='text-sm text-gray-400'>{movie.Year}</p>
+                <p className='text-sm text-gray-400'>{movie.Type}</p>
+                <Library title={movie.Title} year={movie.Year} image={movie.Poster} type={movie.Type}/>
+              </div>
             </div>
           ))}
         </div>
