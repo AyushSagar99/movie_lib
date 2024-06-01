@@ -10,7 +10,8 @@ export default function Home() {
 
   const fetchData = async (value) => {
     try {
-      const response = await fetch(`https://www.omdbapi.com/?s=${value}&plot=full&apikey=3f8db1d7`);
+
+      const response = await fetch(`https://www.omdbapi.com/?s=${value}&plot=full&apikey=${import.meta.env.VITE_OMDB_API_KEY}`);
       const json = await response.json();
       if (json.Response === "True") {
         const results = json.Search.filter((movie) => {
