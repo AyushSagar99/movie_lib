@@ -3,7 +3,10 @@ require('dotenv').config(); // Load environment variables
 
 
 
-mongoose.connect("mongodb+srv://saggarayush:27dQaNH1lbzzKlYp@cluster0.8rvr6mf.mongodb.net/movies")
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
 .then(() => {
     console.log("MongoDB connected");
 })

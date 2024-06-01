@@ -110,7 +110,7 @@ export default function GetMovies() {
                 <li key={index} className='m-2 p-2 bg-gray-700 rounded-md'>
                   <div>Title: {movie.title}</div>
                   <div>Year: {movie.year}</div>
-                  <div>Image: <img src={movie.image} alt={movie.title} className='w-full h-full object-cover' /></div>
+                  <div><img src={movie.image} alt={movie.title} className='w-full h-full object-cover' /></div>
                 </li>
               ))}
           </ul>
