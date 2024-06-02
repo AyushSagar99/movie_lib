@@ -43,7 +43,7 @@ export default function Home() {
       <Navbar />
       <div className='bg-gray-900 h-full  text-white'>
         <div className='flex justify-center'>
-          <h1 className="text-4xl font-bold">Discover Movies</h1>
+          <h1 className="text-4xl font-bold mt-2">Discover Movies</h1>
           <input
             type="search"
             name="library"

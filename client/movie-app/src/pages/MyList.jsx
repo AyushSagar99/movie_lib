@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { getTokenFromLocalStorage } from '../utils/auth';
 import Navbar from '../components/Navbar';
-import toast from 'react-hot-toast';
+
 
 export default function GetMovies() {
   const [movies, setMovies] = useState([]);

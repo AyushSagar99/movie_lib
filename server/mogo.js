@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-require('dotenv').config({path:".env.local"}); 
-
-console.log(process.env.MONGODB_URL);
+require('dotenv').config({path:".env.local"});
 
 mongoose.connect(process.env.MONGODB_URL)
 .then(() => {
@@ -33,7 +31,7 @@ const movieSchema = new mongoose.Schema({
     movies: [{
         title: String,
         year: String,
-        image: String
+        image: String,
     }],
     isPrivate:{
         type:Boolean,

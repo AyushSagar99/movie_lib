@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { getTokenFromLocalStorage, removeTokenFromLocalStorage } from '../utils/auth';
 import Library from '../components/library';
+import toast from 'react-hot-toast';
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -38,8 +39,8 @@ export default function Navbar() {
 
   const handleLogout = () => {
     removeTokenFromLocalStorage();
-
     navigate("/login");
+    toast.success("Logged Out")
   };
 
   return (
@@ -53,7 +54,7 @@ export default function Navbar() {
             Get List
           </button>
         )}
-        <button onClick={handleLogout} className='bg-red-700 h-10 p-1 m-2 rounded-lg font-medium hover:scale-110 transition'>
+        <button onClick={handleLogout} className='bg-red-700 h-10 p-1 m-2 rounded-lg font-medium hover:scale-110 transition border-2 border-red-600  hover:bg-white hover:border-red-600 hover:text-red-600'>
           Logout
         </button>
       </div>
