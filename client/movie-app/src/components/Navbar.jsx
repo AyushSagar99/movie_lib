@@ -49,11 +49,11 @@ export default function Navbar() {
       </div>
       <div className='flex items-center'>
         {location.pathname !== '/mylist' && hasMovies && (
-          <button onClick={goToList} className='bg-blue-700 h-10 p-1 m-2 rounded-lg hover:scale-110 transition'>
+          <button onClick={goToList} className='bg-blue-700 h-10 p-1 m-2 rounded-lg font-medium hover:scale-110 transition'>
             Get List
           </button>
         )}
-        <button onClick={handleLogout} className='bg-red-700 h-10 p-1 m-2 rounded-lg hover:scale-110 transition'>
+        <button onClick={handleLogout} className='bg-red-700 h-10 p-1 m-2 rounded-lg font-medium hover:scale-110 transition'>
           Logout
         </button>
       </div>

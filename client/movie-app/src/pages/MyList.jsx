@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { getTokenFromLocalStorage } from '../utils/auth';
 import Navbar from '../components/Navbar';
+import toast from 'react-hot-toast';
 
 export default function GetMovies() {
   const [movies, setMovies] = useState([]);
@@ -99,7 +100,7 @@ export default function GetMovies() {
             This playlist is private.
           </div>
         ) : (
-          <ul className='flex gap-2 flex-wrap items-center justify-center mt-4' >
+          <ul className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8 mx-4' >
             {showList &&
               movies.map((movie, index) => (
                 <li key={index} className='m-2 p-2 bg-gray-700 rounded-md'>

@@ -42,7 +42,7 @@ export default function Home() {
     <>
       <Navbar />
       <div className='bg-gray-900 h-full  text-white'>
-        <div className='flex justify-center items-center '>
+        <div className='flex justify-center'>
           <h1 className="text-4xl font-bold">Discover Movies</h1>
           <input
             type="search"
@@ -53,7 +53,8 @@ export default function Home() {
             className='bg-gray-600 rounded-md m-2 p-1 outline-none ml-4 mt-4 '
           />
         </div>
-        {error && <p className="text-red-500 text-center mt-4">{error}</p>}
+
+        {error && <p className="text-red-500 text-center mt-4 h-screen">{error}</p>}
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8 mx-4'>
           {movies.map((movie) => (
             <div key={movie.imdbID} className='bg-gray-700 rounded-md overflow-hidden'>
