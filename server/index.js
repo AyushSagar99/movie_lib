@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", cors(), (req, res) => {
-  res.send("Welcome to the API");
+  res.send("Welcome to the API Please use /login in URL");
 });
 
 
