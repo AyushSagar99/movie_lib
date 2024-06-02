@@ -55,7 +55,8 @@ export default function Home() {
         </div>
 
         {error && <p className="text-red-500 text-center mt-4 h-screen">{error}</p>}
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8 mx-4'>
+        <div className='h-screen'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8 mx-4 '>
           {movies.map((movie) => (
             <div key={movie.imdbID} className='bg-gray-700 rounded-md overflow-hidden'>
               <img src={movie.Poster} alt={movie.Title} className='w-full h-64 object-cover' />
@@ -67,6 +68,7 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
         </div>
       </div>
     </>

@@ -54,7 +54,7 @@ export default function Navbar() {
             Get List
           </button>
         )}
-        <button onClick={handleLogout} className='bg-red-700 h-10 p-1 m-2 rounded-lg font-medium hover:scale-110 transition border-2 border-red-600  hover:bg-white hover:border-red-600 hover:text-red-600'>
+        <button onClick={handleLogout} className='bg-red-700 h-10 p-1 m-2 rounded-lg font-medium transition border-2 border-red-600  hover:bg-white hover:border-red-600 hover:text-red-600'>
           Logout
         </button>
       </div>
