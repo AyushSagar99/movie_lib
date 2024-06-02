@@ -37,10 +37,8 @@ export default function Navbar() {
   };
 
   const handleLogout = () => {
-    // Clear the token from local storage
     removeTokenFromLocalStorage();
 
-    // Redirect to the login page
     navigate("/login");
   };
 

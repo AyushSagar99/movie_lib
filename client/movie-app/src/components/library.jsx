@@ -7,8 +7,8 @@ export default function Library({ title, year, image }) {
   async function List(e) {
     e.preventDefault();
 
-    const token = getTokenFromLocalStorage(); // Assuming you have a utility function to get the token
-    const userId = localStorage.getItem('userId'); // Get userId from localStorage
+    const token = getTokenFromLocalStorage(); 
+    const userId = localStorage.getItem('userId'); 
 
     try {
       await axios.post(
@@ -17,11 +17,11 @@ export default function Library({ title, year, image }) {
           title,
           year,
           image,
-          userId // Include userId in the request body
+          userId 
         },
         {
           headers: {
-            Authorization: `Bearer ${token}` // Include the token in the request headers
+            Authorization: `Bearer ${token}` 
           }
         }
       )

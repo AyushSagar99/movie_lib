@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-require('dotenv').config(); // Load environment variables
+require('dotenv').config(); 
 
 
 
@@ -31,7 +31,7 @@ const movieSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true // This is causing the error
+        required: true 
     },
     movies: [{
         title: String,
@@ -47,5 +47,3 @@ const movieSchema = new mongoose.Schema({
 const User = mongoose.model("User", newSchema);
 const movieLib = mongoose.model("MovieLib", movieSchema);
 module.exports = {User,movieLib};
-
-// Additional server setup (e.g., express) goes here

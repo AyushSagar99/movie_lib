@@ -13,15 +13,13 @@ export default function GetMovies() {
   const [playlistIsPrivate, setPlaylistIsPrivate] = useState(false);
 
   useEffect(() => {
-    // Fetch movies when the component mounts
     fetchMovies();
 
-    // Retrieve isPrivate from localStorage
     const storedIsPrivate = localStorage.getItem('isPrivate');
     if (storedIsPrivate !== null) {
       setIsPrivate(JSON.parse(storedIsPrivate));
     }
-  }, []); // Empty dependency array ensures that this effect runs only once
+  }, []); 
 
   async function fetchMovies(userIdToFetch = userId) {
     try {
@@ -36,11 +34,10 @@ export default function GetMovies() {
       setUserId(userId)
       setMovies(movies);
       setPlaylistIsPrivate(isPrivate);
-      setShowList(true); // Set showList to true to display the movie list
+      setShowList(true); 
       
     } catch (error) {
       console.error('Error fetching movies:', error);
-      // Handle error
     }
   }
 
@@ -58,11 +55,9 @@ export default function GetMovies() {
       );
       
       setIsPrivate(newIsPrivate);
-      // Save isPrivate to localStorage
       localStorage.setItem('isPrivate', JSON.stringify(newIsPrivate));
     } catch (error) {
       console.error('Error updating privacy setting:', error);
-      // Handle error
     }
   }
 

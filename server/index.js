@@ -30,7 +30,7 @@ function authenticateToken(req, res, next) {
     if (err) {
       return res.status(403).json({ error: 'Forbidden' });
     }
-    req.user = user; // Attach user object to the request
+    req.user = user; 
     next();
   });
 }
@@ -55,10 +55,8 @@ app.post("/signin", async (req, res) => {
       return res.status(400).json({ error: "Invalid password" });
     }
 
-    // Generate a token
     const token = jwt.sign({ userId: user._id, email: user.email }, 'your_secret_key', { expiresIn: '1h' });
 
-    // Respond with the token and user data
     return res.status(200).json({ message: "Logged In", token, user: user });
   } catch (e) {
     console.log(e);
@@ -79,16 +77,14 @@ app.post("/signup", async (req, res) => {
   try {
     const check = await User.findOne({ email: email });
     if (check) {
-      return res.status(409).json({ error: "User already exists" }); // 409 Conflict
+      return res.status(409).json({ error: "User already exists" }); 
     } else {
-      // Hash the password and create the user
       const hashedPassword = await bcrypt.hash(password, 10);
       const newUser = await User.create({ email, password: hashedPassword });
 
-      // Generate a token
+      
       const token = jwt.sign({ userId: newUser._id, email: newUser.email }, 'your_secret_key', { expiresIn: '1h' });
 
-      // Respond with the token and user data
       return res.status(201).json({ message: "Signed In", token, user: newUser });
     }
   } catch (e) {
@@ -109,14 +105,11 @@ app.post('/add-movie', authenticateToken  ,async (req, res) => {
       );
 
       if (existingMovieIndex !== -1) {
-        // Update the existing movie
         movieLibrary.movies[existingMovieIndex] = { title, year, image };
       } else {
-        // Add the new movie to the library
         movieLibrary.movies.push({ title, year, image });
       }
   
-      // Save the updated movie library
       await movieLibrary.save();
 
     }
@@ -142,11 +135,9 @@ app.post('/add-movie', authenticateToken  ,async (req, res) => {
 
 app.get('/movies',authenticateToken, async (req, res) => {
   try {
-    // Find the movie library entry for the authenticated user
     const userId = req.user.userId;
     const movieLibrary = await movieLib.findOne({ user: userId });
 
-    // Return the movies associated with the user
     res.json({movies:movieLibrary.movies,userId});
   } catch (error) {
     console.error('Error fetching movies:', error);
@@ -159,7 +150,7 @@ app.post("/isprivate", authenticateToken, async (req, res) => {
 
   try {
     const movieLibrary = await movieLib.findOneAndUpdate(
-      { user: userId }, // Convert userId to ObjectId
+      { user: userId },
       { isPrivate: isPrivate },
     );
 
@@ -174,7 +165,6 @@ app.post("/isprivate", authenticateToken, async (req, res) => {
   }
 });
 
-// Assuming you have a route like '/movies/:userId'
 
 app.get('/movies/:userId', authenticateToken, async (req, res) => {
   const { userId } = req.params;
