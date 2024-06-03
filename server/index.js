@@ -10,7 +10,11 @@ const router = express.Router();
 const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+  origin: 'movielib-production.up.railway.app', 
+  methods: 'GET,POST,PUT,DELETE',
+  credentials: true
+}));
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", cors(), (req, res) => {
@@ -64,7 +68,6 @@ app.post("/signin", async (req, res) => {
   }
 });
 
-// Start the server
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
