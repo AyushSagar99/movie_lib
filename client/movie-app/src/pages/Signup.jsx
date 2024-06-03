@@ -14,7 +14,7 @@ export default function Signup() {
   async function submit(e) {
     e.preventDefault();
     try {
-      const response = await axios.post("movielib-production-4fcf.up.railway.app/signup", {
+      const response = await axios.post("http://localhost:8000/signup", {
         email,
         password
       });
