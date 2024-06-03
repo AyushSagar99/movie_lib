@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors({
-  origin: 'movielib-production.up.railway.app', 
+  origin: 'http://172.30.32.1:5173/', 
   methods: 'GET,POST,PUT,DELETE',
   credentials: true
 }));
