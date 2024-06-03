@@ -13,7 +13,7 @@ const routes=(
   <Router>
     <Routes>
       <Route path="/home" element={<Home/>} />
-      <Route path="/login" element={<Login/>} />
+      <Route path="/signin" element={<Login/>} />
       <Route path="/signup" element={<Signup/>} />
       <Route path="/mylist" element={<MyList/>} />
     </Routes>
