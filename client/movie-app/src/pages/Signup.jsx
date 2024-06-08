@@ -14,7 +14,7 @@ export default function Signup() {
   async function submit(e) {
     e.preventDefault();
     try {
-      const response = await axios.post("movielib-production-4fcf.up.railway.app/signup", {
+      const response = await axios.post("http://localhost:8000/signup", {
         email,
         password
       });
@@ -60,7 +60,7 @@ export default function Signup() {
             className='rounded-md p-2 text-gray-900 bg-gray-100 focus:outline-none w-56'
           />
           <button className='bg-red-600 text-white rounded-md p-2 hover:bg-red-700 transition font-medium w-56' onClick={submit}>Continue</button>
-          <p className='text-white'>Have an account? <a className='text-red-600 font-medium hover:underline transition' href='/login'>Login</a></p>
+          <p className='text-white'>Have an account? <a className='text-red-600 font-medium hover:underline transition' href='/signin'>Login</a></p>
         </form>
       </div>
     </div>

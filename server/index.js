@@ -5,20 +5,17 @@ const mongoose = require('mongoose');
 const bcrypt = require("bcryptjs");
 const bodyParser = require('body-parser');
 const { User, movieLib } = require("./mogo");
+const path = require('path');
 const router = express.Router();
 
 const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(cors({
-  origin: 'http://172.30.32.1:5173/', 
-  methods: 'GET,POST,PUT,DELETE',
-  credentials: true
-}));
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", cors(), (req, res) => {
-  res.send("Welcome to the API Please use /login in URL");
+  res.send("Welcome to the API Please use /signin in URL");
 });
 
 

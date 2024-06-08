@@ -39,7 +39,7 @@ export default function Navbar() {
 
   const handleLogout = () => {
     removeTokenFromLocalStorage();
-    navigate("/login");
+    navigate("/signin");
     toast.success("Logged Out")
   };
 
