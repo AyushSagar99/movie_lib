@@ -10,28 +10,25 @@ import { Toaster } from "react-hot-toast";
 const queryClient=new  QueryClient({})
 
 const routes=(
-  <Router>
     <Routes>
       <Route path="/home" element={<Home/>} />
       <Route path="/signin" element={<Login/>} />
       <Route path="/signup" element={<Signup/>} />
       <Route path="/mylist" element={<MyList/>} />
     </Routes>
-  </Router>
 )
 
 function App() {
 
   return (
-    <>
+    <Router>
     <div>
-      ddffd
       <Toaster position="top-center" />
       <QueryClientProvider client={queryClient}>
       {routes}
       </QueryClientProvider>
     </div>
-    </>
+    </Router>
   )
 }
 
